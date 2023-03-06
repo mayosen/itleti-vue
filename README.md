@@ -1,1 +1,1 @@
-# itleti-vue
+# Курс "Frontend-разработка на Vue.js"
