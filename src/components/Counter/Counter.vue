@@ -1,18 +1,25 @@
 <script setup>
-import { onMounted, ref } from "vue";
+import { ref, onMounted, onUnmounted } from "vue";
 
 const counter = ref(0);
 const date = ref(new Date().toLocaleTimeString());
+let interval;
 
 function counterHandler(event) {
+  console.log(event.type);
   counter.value++;
 }
 
 onMounted(() => {
-  setInterval(() => {
+  interval = setInterval(() => {
     date.value = new Date().toLocaleTimeString();
   }, 1000);
 });
+
+onUnmounted(() => {
+  clearInterval(interval);
+});
+
 </script>
 
 <template>
