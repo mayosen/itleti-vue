@@ -13,8 +13,8 @@
 </script>
 
 <template>
-  <label for="filter">Введите фильтр: </label>
-  <input id="filter" type="text" v-model="nameFilter">
+  <label for="nameFilter">Введите фильтр: </label>
+  <input id="nameFilter" type="text" v-model="nameFilter">
 
   <div>
     <template v-for="card in cards" :key="card.name">
