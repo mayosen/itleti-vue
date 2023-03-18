@@ -1,15 +1,30 @@
 <script setup>
-  import Counter from "./components/Counter/Counter.vue"
+  import { ref } from "vue";
+  import css from "./App.module.css"
+
+  const cards = ref([
+      {name: "Пачка молока", price: "70"},
+      {name: "Пачка сока", price: "100"},
+      {name: "Десяток яиц", price: "70"},
+      {name: "Огурцы колючие", price: "12"},
+      {name: "Огурцы гладкие", price: "10"},
+  ]);
+  const nameFilter = ref("");
 </script>
 
 <template>
-  <h1>Hello</h1>
-  <Counter></Counter>
+  <label for="filter">Введите фильтр: </label>
+  <input id="filter" type="text" v-model="nameFilter">
+
+  <div>
+    <template v-for="card in cards" :key="card.name">
+      <div :class="css.card" v-if="card.name.toLocaleLowerCase().includes(nameFilter.toLocaleLowerCase())">
+        <div>{{ card.name }}</div>
+        <div :class="css.price">{{ card.price }}</div>
+      </div>
+    </template>
+  </div>
 </template>
 
 <style scoped>
-h1 {
-  color: red;
-  text-align: center;
-}
 </style>
