@@ -1,15 +1,9 @@
 <script setup>
-  import { ref } from "vue";
-  import Timer from "./components/Timer/Timer.vue";
-
-  const text = ref("");
+  import YesNo from "./components/YesNo/YesNo.vue"
 </script>
 
 <template>
-  <input v-model="text">
-  <template v-if="text">
-    <Timer></Timer>
-  </template>
+  <YesNo></YesNo>
 </template>
 
 <style scoped>
