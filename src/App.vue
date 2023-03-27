@@ -7,11 +7,15 @@
 
 <template>
   <input v-model="text">
+
   <Button>
     <template #value>{{ text }}</template>
     <template #suffix>!!!</template>
   </Button>
-  <Button></Button>
+
+  <Button>
+    <template #childrenSlot="props">{{ props }}</template>
+  </Button>
 </template>
 
 <style scoped>

@@ -6,6 +6,7 @@
     <slot name="value">DEFAULT</slot>
     <slot name="suffix">_SUFFIX</slot>
   </button>
+  <slot name="childrenSlot" childrenProp="secret message"></slot>
 </template>
 
 <style scoped>
