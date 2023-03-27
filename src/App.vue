@@ -1,9 +1,17 @@
 <script setup>
-  import YesNo from "./components/YesNo/YesNo.vue"
+  import { ref } from "vue";
+  import Button from "./components/Button/Button.vue";
+
+  const text = ref("");
 </script>
 
 <template>
-  <YesNo></YesNo>
+  <input v-model="text">
+  <Button>
+    <template #value>{{ text }}</template>
+    <template #suffix>!!!</template>
+  </Button>
+  <Button></Button>
 </template>
 
 <style scoped>
