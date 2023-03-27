@@ -1,9 +1,15 @@
 <script setup>
-  import ProductList from "./components/ProductList/ProductList.vue"
+  import Header from "./components/Header/Header.vue"
+  import { ref } from "vue";
+
+  const text = ref("");
 </script>
 
 <template>
-  <ProductList></ProductList>
+  <input v-model="text">
+  <template v-if="text">
+    <Header :input="text"></Header>
+  </template>
 </template>
 
 <style scoped>
