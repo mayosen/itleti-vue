@@ -1,6 +1,6 @@
 <script setup>
-  import Header from "./components/Header/Header.vue"
   import { ref } from "vue";
+  import Timer from "./components/Timer/Timer.vue";
 
   const text = ref("");
 </script>
@@ -8,7 +8,7 @@
 <template>
   <input v-model="text">
   <template v-if="text">
-    <Header :input="text"></Header>
+    <Timer></Timer>
   </template>
 </template>
 
