@@ -1,22 +1,18 @@
 <script setup>
-  import { ref } from "vue";
-  import Button from "./components/Button/Button.vue";
-
-  const text = ref("");
+  import MouseListener from "./components/MouseListener/MouseListener.vue";
 </script>
 
 <template>
-  <input v-model="text">
-
-  <Button>
-    <template #value>{{ text }}</template>
-    <template #suffix>!!!</template>
-  </Button>
-
-  <Button>
-    <template #childrenSlot="props">{{ props }}</template>
-  </Button>
+  <div class="coords">
+    <MouseListener v-slot="{ x, y }">
+      {{ x }} : {{ y }}
+    </MouseListener>
+  </div>
 </template>
 
 <style scoped>
+  .coords {
+    font-family: monospace;
+    letter-spacing: 10px;
+  }
 </style>
