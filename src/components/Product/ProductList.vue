@@ -1,6 +1,8 @@
 <script setup>
   import { ref } from "vue";
+  import ProductCard from "./ProductCard.vue";
 
+  const nameFilter = ref("");
   const cards = ref([
     {name: "Пачка молока", price: "70"},
     {name: "Пачка сока", price: "100"},
@@ -8,33 +10,22 @@
     {name: "Огурцы колючие", price: "12"},
     {name: "Огурцы гладкие", price: "10"},
   ]);
-  const nameFilter = ref("");
+
+  function matchesNameFilter(card) {
+    return card.name.toLowerCase().includes(nameFilter.value.toLowerCase());
+  }
 </script>
 
 <template>
   <label for="nameFilter">Введите фильтр: </label>
-  <input id="nameFilter" type="text" v-model="nameFilter" />
+  <input id="nameFilter" v-model="nameFilter" />
 
   <div>
     <template v-for="card in cards" :key="card.name">
-      <div class="card" v-if="card.name.toLowerCase().includes(nameFilter.toLowerCase())">
-        <div>{{ card.name }}</div>
-        <div class="price">{{ card.price }}</div>
-      </div>
+      <ProductCard :name="card.name" :price="card.price" v-if="matchesNameFilter(card)"></ProductCard>
     </template>
   </div>
 </template>
 
 <style scoped>
-  .card {
-    margin: 10px;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    max-width: 200px;
-  }
-
-  .price {
-    font-family: monospace;
-  }
 </style>
