@@ -4,8 +4,8 @@
 
 <template>
   <div class="card">
-    <span>{{ name }}</span>
-    <span class="price">{{ price }}₽</span>
+    <div>{{ name }}</div>
+    <div class="price">{{ price }}₽</div>
   </div>
 </template>
 
