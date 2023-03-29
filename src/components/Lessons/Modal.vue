@@ -1,6 +1,5 @@
 <script setup>
   import { Teleport } from "vue";
-  import Button from "./Button.vue";
 
   defineEmits(["close"]);
   defineProps(["show"]);
