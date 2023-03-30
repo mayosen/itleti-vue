@@ -1,29 +1,47 @@
 <script setup>
-  import { Teleport, onUpdated } from "vue";
+  import { Teleport, watch, ref } from "vue";
   import Button from "../Lessons/Button.vue";
 
-  const emit = defineEmits(["close, action"]);
-  defineProps(["show"]);
+  const CLOSE_AFTER = 10_000;
+  const emit = defineEmits(["close", "action"]);
+  const props = defineProps(["show"]);
+  const closeTimeout = ref(null);
 
-  onUpdated(() => {
-    setTimeout(() => {
-      console.log("Удаляем окно");
-      emit("close");
-    }, 2000);
+  watch(
+    () => props.show,
+    (newValue) => {
+      if (newValue === true) {
+        console.log("Окно закроется через 10с")
+        closeTimeout.value = setTimeout(close, CLOSE_AFTER);
+      }
   });
+
+  function close() {
+    console.log("Удаляем окно");
+    emit("close");
+    clearTimeout(closeTimeout.value);
+    console.log("Таймаут удален");
+  }
+
+  function action() {
+    close();
+    emit("action");
+  }
 </script>
 
 <template>
   <Teleport to="#popup">
-    <div class="popup" v-if="show">
-      <div class="popup__message">
-        <slot name="message"></slot>
+    <Transition>
+      <div class="popup" v-if="show">
+        <div class="popup__message">
+          <slot name="message"></slot>
+        </div>
+        <div class="popup__action" @click="action()">
+          <slot name="action"></slot>
+        </div>
+        <button @click="close()">&times;</button>
       </div>
-      <div class="popup__action" @click="$emit('action')">
-        <slot name="action"></slot>
-      </div>
-      <button @click="$emit('close')">&times;</button>
-    </div>
+    </Transition>
   </Teleport>
 </template>
 
@@ -62,5 +80,14 @@
     font-size: 1.2rem;
     cursor: pointer;
     padding: 4px;
+  }
+
+  .v-enter-active, .v-leave-active {
+    transition: all 400ms ease;
+  }
+
+  .v-enter-from, .v-leave-to {
+    opacity: 0;
+    transform: translateX(-100px);
   }
 </style>
