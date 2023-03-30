@@ -2,17 +2,18 @@
   import { Teleport, watch, ref } from "vue";
   import Button from "../Lessons/Button.vue";
 
-  const CLOSE_AFTER = 10_000;
+  const DEFAULT_DURATION = 10;
   const emit = defineEmits(["close", "action"]);
-  const props = defineProps(["show"]);
+  const props = defineProps(["show", "duration"]);
   const closeTimeout = ref(null);
 
   watch(
     () => props.show,
     (newValue) => {
       if (newValue === true) {
-        console.log("Окно закроется через 10с")
-        closeTimeout.value = setTimeout(close, CLOSE_AFTER);
+        let timeout = props.duration || DEFAULT_DURATION;
+        console.log(`Окно закроется через ${timeout}с`);
+        closeTimeout.value = setTimeout(close, timeout * (10 ** 3));
       }
   });
 
