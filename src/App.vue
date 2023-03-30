@@ -11,7 +11,7 @@
 
 <template>
   <button @click="showPopUp = !showPopUp">Показать всплывающее окно</button>
-  <PopUp :show="showPopUp" @close="showPopUp = false" @action="modalAction()">
+  <PopUp :show="showPopUp" :duration="4000" @close="showPopUp = false" @action="modalAction()">
     <template v-slot:message>Заявка отправлена</template>
     <template v-slot:action>Отменить</template>
   </PopUp>

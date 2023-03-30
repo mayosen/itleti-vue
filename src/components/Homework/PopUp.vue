@@ -2,7 +2,7 @@
   import { Teleport, watch, ref } from "vue";
   import Button from "../Lessons/Button.vue";
 
-  const DEFAULT_DURATION = 10;
+  const DEFAULT_DURATION = 5000;
   const emit = defineEmits(["close", "action"]);
   const props = defineProps(["show", "duration"]);
   const closeTimeout = ref(null);
@@ -12,8 +12,8 @@
     (newValue) => {
       if (newValue === true) {
         let timeout = props.duration || DEFAULT_DURATION;
-        console.log(`Окно закроется через ${timeout}с`);
-        closeTimeout.value = setTimeout(close, timeout * (10 ** 3));
+        console.log(`Окно закроется через ${timeout / 1000}с`);
+        closeTimeout.value = setTimeout(close, timeout);
       }
   });
 
@@ -41,6 +41,9 @@
           <slot name="action"></slot>
         </div>
         <button @click="close()">&times;</button>
+        <div class="popup__line"
+             :style="`animation-duration: ${props.duration || DEFAULT_DURATION}ms`">
+        </div>
       </div>
     </Transition>
   </Teleport>
@@ -54,11 +57,11 @@
     width: clamp(200px, 30vw, 300px);
     border: 1px solid black;
     border-radius: 4px;
-    display: flex;
-    align-items: center;
     background: #4b0994;
     padding: 15px 20px;
     color: white;
+    display: flex;
+    align-items: center;
   }
 
   .popup__message {
@@ -81,6 +84,24 @@
     font-size: 1.2rem;
     cursor: pointer;
     padding: 4px;
+  }
+
+  .popup__line {
+    height: 2px;
+    background: #ff0087;
+    animation: 10000ms linear timeline forwards;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  @keyframes timeline {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 0;
+    }
   }
 
   .v-enter-active, .v-leave-active {
