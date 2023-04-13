@@ -1,20 +1,23 @@
 <script setup>
   import { ref } from "vue";
-  import PopUp from "./components/Homework/PopUp.vue"
+  import Modal from "./components/Lessons/Modal.vue";
+  import Header from "./components/Header/Header.vue";
 
-  const showPopUp = ref(false);
-
-  function modalAction() {
-    console.log("Пользователь выполнил действие");
-  }
+  const showModal = ref(false);
 </script>
 
 <template>
-  <button @click="showPopUp = !showPopUp">Показать всплывающее окно</button>
-  <PopUp :show="showPopUp" :duration="4000" @close="showPopUp = false" @action="modalAction()">
-    <template v-slot:message>Заявка отправлена</template>
-    <template v-slot:action>Отменить</template>
-  </PopUp>
+  <Header></Header>
+  <button @click="showModal = !showModal">Показать</button>
+  <Modal :show="showModal" @close="showModal = false">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aliquam labore non nostrum omnis quae quas quasi quibusdam
+    voluptate voluptates! A accusamus ad aliquam aspernatur aut corporis delectus ducimus ea esse ex exercitationem fuga
+    incidunt nostrum, odio optio porro provident quam reprehenderit rerum sit veritatis voluptas voluptatum. Atque
+    consequuntur dolores obcaecati omnis provident unde vel voluptas. Accusantium alias, animi architecto assumenda
+    atque blanditiis dolore incidunt ipsam laboriosam laborum libero maiores, minima odio perferendis quaerat rem sed,
+    similique veritatis vitae voluptatem. Aliquid aut corporis culpa dolorum explicabo fugiat laudantium nesciunt
+    perspiciatis qui reprehenderit. Adipisci assumenda consequuntur deserunt dolore dolorem explicabo numquam, optio.
+  </Modal>
 </template>
 
 <style>
