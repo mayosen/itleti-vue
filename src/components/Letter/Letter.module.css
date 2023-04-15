@@ -1,0 +1,31 @@
+.letter {
+  display: grid;
+  gap: 8px;
+  grid-template-columns:
+    [important] 1fr
+    [read] 1fr
+    [sender] 6fr
+    [title] 40fr
+    [date] 4fr
+}
+
+.overflow {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.letter__important {
+}
+
+.letter__read {
+}
+
+.letter__sender {
+}
+
+.letter__title {
+}
+
+.letter__date {
+}

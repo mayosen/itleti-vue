@@ -1,0 +1,32 @@
+.btn {
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+  font-size: 1.1rem;
+}
+
+.btn_default {
+  padding: 5px 25px;
+  font-family: inherit;
+  background-color: #eeeeee;
+  transition: background-color 500ms ease;
+}
+
+.btn_default:hover {
+  background-color: #dcdcdc;
+}
+
+.btn_icon {
+  background: none;
+  padding: 0;
+  margin: 0;
+  transition: box-shadow 500ms ease;
+}
+
+.btn_icon img {
+  display: block;
+}
+
+.btn_icon:hover {
+  box-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+}

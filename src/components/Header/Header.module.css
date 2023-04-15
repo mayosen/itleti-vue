@@ -1,0 +1,30 @@
+.header {
+  max-height: 50px;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+  padding: 0;
+  margin: 0;
+  gap: 50px;
+}
+
+.header__logo {
+  font-weight: 600;
+  color: #ff00b7;
+  transition: color 500ms ease;
+  font-size: 1.5rem;
+}
+
+.header__logo:hover {
+  color: #000000;
+}
+
+.header__search {
+  flex-grow: 1;
+}
+
+.header__help {
+
+}
