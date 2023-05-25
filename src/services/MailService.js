@@ -17,7 +17,20 @@ class MailService {
   }
 
   getLetter(mailId) {
-
+    return fetch(`https://vue-api.kzteams.ru/mail/${mailId}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        res.json().then(data => {
+          throw new Error(data)
+        });
+      }
+    });
   }
 
   sendLetter(letter) {

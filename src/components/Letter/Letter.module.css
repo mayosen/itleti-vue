@@ -9,6 +9,11 @@
     [important] 5%;
   padding: 10px 10px;
   border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.letter:hover {
+  background: #e3e3e3;
 }
 
 .overflow {
@@ -33,6 +38,10 @@
 }
 
 .letter__title {
+}
+
+.letter__title:hover {
+  cursor: pointer;
 }
 
 .letter__date {

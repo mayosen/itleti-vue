@@ -4,12 +4,30 @@
   margin-top: 30px;
 }
 
+.main__menu {
+  display: flex;
+  justify-content: space-between;
+  margin: 30px 20px 0 20px;
+}
+
 .main__create {
-  margin: 30px 0 0 20px;
+  justify-self: end;
+  align-self: end;
 }
 
 .main__check-all {
   margin: 30px 0 0 25px;
   display: flex;
   gap: 10px;
+}
+
+.main__pager {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.current-page {
+  font-weight: 700;
+  margin-right: 10px;
 }
