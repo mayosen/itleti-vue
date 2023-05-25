@@ -2,7 +2,7 @@
   import css from "./Input.module.css";
   import { computed } from "vue";
 
-  const props = defineProps(["styleType"]);
+  const props = defineProps(["styleType", "placeholder"]);
 
   const classNames = computed(() => ({
     [css.input_default]: !props.styleType,
@@ -13,7 +13,7 @@
 <template>
   <div :class="css.input__wrapper">
     <span :class="css.input__icon"><slot>&times;</slot></span>
-    <input type="text" :class="[classNames]">
+    <input type="text" :class="[classNames]" :placeholder="placeholder">
   </div>
 </template>
 

@@ -1,12 +1,14 @@
 .letter {
   display: grid;
-  gap: 8px;
+  gap: 5px;
   grid-template-columns:
-    [important] 1fr
-    [read] 1fr
-    [sender] 6fr
-    [title] 40fr
-    [date] 4fr
+    [read] 5%
+    [sender] 20%
+    [title] 60%
+    [date] 10%
+    [important] 5%;
+  padding: 10px 10px;
+  border-radius: 5px;
 }
 
 .overflow {
@@ -15,10 +17,16 @@
   white-space: nowrap;
 }
 
+.letter__checked {
+  background: gray;
+  transition: background 0.1s ease;
+}
+
 .letter__important {
 }
 
-.letter__read {
+.letter__checkbox {
+  margin: 0 auto;
 }
 
 .letter__sender {

@@ -1,24 +1,32 @@
 <script setup>
-  import { computed } from "vue";
+  import { computed, ref } from "vue";
   import { DateTime } from "luxon";
   import css from "./Letter.module.css";
   import Checkbox from "../Controls/Checkbox/Checkbox.vue";
 
-  const { isImportant, date, isRead } = defineProps(["isImportant", "date", "isRead"]);
+  const props = defineProps(["isImportant", "date", "isRead", "isAllChecked"]);
+
   const dateString = computed(() => {
-    const datetime = DateTime.fromMillis(date).setLocale("ru");
+    const datetime = DateTime.fromMillis(props.date).setLocale("ru");
     return datetime.toFormat("dd MMM");
   });
+
+  const isChecked = ref(false);
+
+  function onCheck(checked) {
+    isChecked.value = checked;
+  }
+
+  const letterClasses = computed(() => ({
+    [css.letter]: true,
+    [css.letter__checked]: isChecked.value || props.isAllChecked
+  }));
 </script>
 
 <template>
-  <div :class="css.letter">
-    <div :class="css.letter__important">
-      <Checkbox></Checkbox>
-      <span v-if="isImportant">!</span>
-    </div>
-    <div :class="css.letter__read">
-      {{ Number(isRead) }}
+  <div :class="letterClasses">
+    <div :class="css.letter__checkbox">
+      <Checkbox @check="onCheck" :isChecked="isChecked || isAllChecked"></Checkbox>
     </div>
     <div :class="[css.letter__sender, css.overflow]">
       <slot name="sender"></slot>
@@ -28,6 +36,11 @@
     </div>
     <div :class="css.letter__date">
       {{ dateString }}
+    </div>
+    <div>
+      <span v-if="isImportant">
+        <img src="/star.svg" alt="Star" width="15" height="15">
+      </span>
     </div>
   </div>
 </template>
