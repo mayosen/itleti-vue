@@ -8,7 +8,7 @@
 .editor__area {
   resize: none;
   width: 100%;
-  height: 100px;
+  height: 150px;
   padding: 5px 10px;
   border-radius: 5px;
 }

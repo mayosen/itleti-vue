@@ -1,6 +1,19 @@
 class MailService {
   getLetters(pageNumber) {
-
+    return fetch(`https://vue-api.kzteams.ru/page/${pageNumber}`, {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    }).then(res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        res.json().then(data => {
+          throw new Error(data)
+        });
+      }
+    });
   }
 
   getLetter(mailId) {
@@ -8,13 +21,21 @@ class MailService {
   }
 
   sendLetter(letter) {
-    fetch("https://vue-api.kzteams.ru/mail", {
+    return fetch("https://vue-api.kzteams.ru/mail", {
       method: "POST",
       body: JSON.stringify(letter),
       headers: {
-        "Content-Type": "application/json;charset=utf-8"
+        "Content-Type": "application/json"
       }
-    })
+    }).then(res => {
+      if (res.ok) {
+        return res.json();
+      } else {
+        res.json().then(data => {
+          throw new Error(data)
+        });
+      }
+    });
   }
 }
 

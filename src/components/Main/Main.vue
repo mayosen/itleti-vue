@@ -1,12 +1,12 @@
 <script setup>
   import css from "./Main.module.css";
-  import { LettersMock } from "@/utils/mock.js";
-  import { computed, inject, ref } from "vue";
+  import { inject, ref, watchEffect } from "vue";
   import Letter from "@/components/Letter/Letter.vue";
   import Checkbox from "@/components/Controls/Checkbox/Checkbox.vue";
   import Button from "@/components/Controls/Button/Button.vue";
   import Modal from "@/components/Lessons/Modal.vue";
   import Editor from "@/components/Editor/Editor.vue";
+  import MailService from "../../services/MailService.js";
 
   const isAllChecked = ref(false);
 
@@ -14,15 +14,21 @@
     isAllChecked.value = checked;
   }
 
+  const letters = ref([]);
   const lettersQuery = inject("lettersQuery");
-
-  const letters = computed(() => {
-    const query = lettersQuery.value;
-    if (!query) return LettersMock;
-    return LettersMock.filter(letter => letter.title.toLowerCase().includes(query.toLowerCase()));
-  });
-
   const isModalOpened = ref(false);
+
+  function filterLetters() {
+    const query = lettersQuery.value;
+    if (!query) return letters.value;
+    return letters.value.filter(letter => letter.title.toLowerCase().includes(query.toLowerCase()));
+  }
+  function getPageHandler() {
+    MailService.getLetters(1).then(res => letters.value = res.message);
+    isModalOpened.value = false;
+  }
+
+  watchEffect(getPageHandler);
 </script>
 
 <template>
@@ -37,9 +43,8 @@
     </div>
 
     <section :class="css.letters">
-
       <Letter
-        v-for="letter in letters"
+        v-for="letter in filterLetters(letters)"
         :isImportant="letter.isImportant"
         :date="letter.date"
         :isRead="letter.isRead"
@@ -53,7 +58,7 @@
   <Modal :show="isModalOpened" @close="isModalOpened = false">
     <template #title>Новое письмо</template>
     <template #body>
-      <Editor></Editor>
+      <Editor :getPageHandler="getPageHandler"></Editor>
     </template>
   </Modal>
 </template>

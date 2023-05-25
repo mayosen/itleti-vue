@@ -2,7 +2,7 @@
   import css from "./Input.module.css";
   import { computed } from "vue";
 
-  const props = defineProps(["styleType", "placeholder", "modelValue"]);
+  const props = defineProps(["styleType", "placeholder", "modelValue", "type"]);
   defineEmits(["update:modelValue"]);
 
   const classNames = computed(() => ({
@@ -23,6 +23,7 @@
       :placeholder="placeholder"
       :value="modelValue"
       @input="$emit('update:modelValue', $event.target.value)"
+      :type="type"
     >
   </div>
 </template>

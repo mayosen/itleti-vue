@@ -37,7 +37,7 @@
   }
 
   .modal {
-    width: clamp(300px, 50%, 600px);
+    width: clamp(300px, 60%, 600px);
     border-radius: 10px;
     padding: 15px 20px;
     background: white;
