@@ -2,12 +2,18 @@
   position: relative;
 }
 
-.input_default {
+.input__default {
 }
 
-.input_search {
+.input__default,
+.input__search,
+.input__form {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+}
+
+.input__search {
   padding: 6px 10px 6px 40px;
-  font-family: inherit;
+  border-radius: 5px;
   width: 100%;
 }
 
@@ -23,4 +29,10 @@
 .input__icon img {
   height: 20px;
   width: 20px;
+}
+
+.input__form {
+  padding: 5px 10px;
+  border-radius: 5px;
+  width: 100%;
 }

@@ -8,7 +8,7 @@
 
   const dateString = computed(() => {
     const datetime = DateTime.fromMillis(props.date).setLocale("ru");
-    return datetime.toFormat("dd MMM");
+    return datetime.toFormat("hh:mm, dd MMM");
   });
 
   const isChecked = ref(false);

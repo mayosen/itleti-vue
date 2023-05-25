@@ -3,3 +3,13 @@
   gap: 5px;
   margin-top: 30px;
 }
+
+.main__create {
+  margin: 30px 0 0 20px;
+}
+
+.main__check-all {
+  margin: 30px 0 0 25px;
+  display: flex;
+  gap: 10px;
+}

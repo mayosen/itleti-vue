@@ -4,8 +4,8 @@
   grid-template-columns:
     [read] 5%
     [sender] 20%
-    [title] 60%
-    [date] 10%
+    [title] 58%
+    [date] 12%
     [important] 5%;
   padding: 10px 10px;
   border-radius: 5px;
@@ -26,7 +26,7 @@
 }
 
 .letter__checkbox {
-  margin: 0 auto;
+  margin-left: 15px;
 }
 
 .letter__sender {

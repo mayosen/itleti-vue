@@ -2,18 +2,17 @@
   cursor: pointer;
   border-radius: 5px;
   border: none;
-  font-size: 1.1rem;
 }
 
 .btn_default {
   padding: 5px 25px;
   font-family: inherit;
-  background-color: #eeeeee;
+  background-color: #e3e3e3;
   transition: background-color 500ms ease;
 }
 
 .btn_default:hover {
-  background-color: #dcdcdc;
+  background-color: rgba(255, 0, 183, 0.5);
 }
 
 .btn_icon {
