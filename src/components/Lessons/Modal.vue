@@ -11,11 +11,14 @@
       <div class="modal__overlay" v-if="show" @click.self="$emit('close')">
         <div class="modal">
           <div class="modal__header">
-            <div>Модальное окно</div>
+            <div>
+              <slot name="title"></slot>
+            </div>
             <button @click="$emit('close')">&times;</button>
           </div>
+          <div class="modal__divider"></div>
           <div class="modal__body">
-            <slot></slot>
+            <slot name="body"></slot>
           </div>
         </div>
       </div>
@@ -24,10 +27,19 @@
 </template>
 
 <style scoped>
+  .modal__overlay {
+    position: absolute;
+    inset: 0 0 0 0;
+    background: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
   .modal {
-    width: clamp(300px, 50%, 600px);
+    width: clamp(300px, 60%, 600px);
     border-radius: 10px;
-    padding: 15px 10px;
+    padding: 15px 20px;
     background: white;
     margin: 0 20px;
   }
@@ -35,7 +47,6 @@
   .modal__header {
     display: flex;
     align-items: center;
-    padding-bottom: 10px;
   }
 
   .modal__header div {
@@ -49,13 +60,15 @@
     font-size: 1.2rem;
   }
 
-  .modal__overlay {
-    position: absolute;
-    inset: 0 0 0 0;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  .modal__divider {
+    display: block;
+    height: 1px;
+    background: rgba(0, 0, 0, 0.2);
+    margin: 10px 0;
+  }
+
+  .modal__body {
+
   }
 
   .v-enter-from, .v-leave-to {

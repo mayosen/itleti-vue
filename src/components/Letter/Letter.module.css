@@ -1,12 +1,19 @@
 .letter {
   display: grid;
-  gap: 8px;
+  gap: 5px;
   grid-template-columns:
-    [important] 1fr
-    [read] 1fr
-    [sender] 6fr
-    [title] 40fr
-    [date] 4fr
+    [read] 5%
+    [sender] 20%
+    [title] 58%
+    [date] 12%
+    [important] 5%;
+  padding: 10px 10px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.letter:hover {
+  background: #e3e3e3;
 }
 
 .overflow {
@@ -15,16 +22,26 @@
   white-space: nowrap;
 }
 
+.letter__checked {
+  background: #e3e3e3;
+  transition: background 0.1s ease;
+}
+
 .letter__important {
 }
 
-.letter__read {
+.letter__checkbox {
+  margin-left: 15px;
 }
 
 .letter__sender {
 }
 
 .letter__title {
+}
+
+.letter__title:hover {
+  cursor: pointer;
 }
 
 .letter__date {

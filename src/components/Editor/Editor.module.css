@@ -1,0 +1,14 @@
+.editor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 5px;
+}
+
+.editor__area {
+  resize: none;
+  width: 100%;
+  height: 150px;
+  padding: 5px 10px;
+  border-radius: 5px;
+}
